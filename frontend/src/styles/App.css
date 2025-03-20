@@ -1,0 +1,36 @@
+.App {
+    text-align: center;
+    padding: 20px;
+  }
+  
+  .task {
+    border: 1px solid #ccc;
+    padding: 10px;
+    margin: 10px auto;
+    max-width: 500px;
+    text-align: left;
+  }
+  
+  form {
+    margin-bottom: 20px;
+  }
+  
+  input, textarea, select {
+    display: block;
+    margin: 10px auto;
+    padding: 8px;
+    width: 80%;
+    max-width: 400px;
+  }
+  
+  button {
+    padding: 10px 20px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    cursor: pointer;
+  }
+  
+  button:hover {
+    background-color: #0056b3;
+  }
