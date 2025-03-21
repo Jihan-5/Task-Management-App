@@ -34,3 +34,95 @@
   button:hover {
     background-color: #0056b3;
   }
+
+ /* Light mode */
+body.light-mode {
+  background-color: #ffffff;
+  color: #000000;
+}
+
+/* Dark mode */
+body.dark-mode {
+  background-color: #1a1a1a;
+  color: #ffffff;
+}
+
+/* Dark mode styles for specific elements */
+.dark-mode .card {
+  background-color: #333333;
+  color: #ffffff;
+  border-color: #444444;
+}
+
+.dark-mode .btn-secondary {
+  background-color: #555555;
+  border-color: #555555;
+}
+
+.dark-mode .btn-primary {
+  background-color: #007bff;
+  border-color: #007bff;
+}
+
+.dark-mode .btn-success {
+  background-color: #28a745;
+  border-color: #28a745;
+}
+
+.dark-mode .btn-danger {
+  background-color: #dc3545;
+  border-color: #dc3545;
+}
+
+/* Ensure text color changes in dark mode */
+.dark-mode h1,
+.dark-mode h2,
+.dark-mode h3,
+.dark-mode p {
+  color: #ffffff;
+}
+
+/* Center align the container */
+.container {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+/* Center align the heading */
+h1 {
+  text-align: center;
+}
+
+/* Task card styles */
+.card {
+  height: 100%;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.card-body {
+  padding: 20px;
+}
+
+.card-title {
+  font-size: 1.25rem;
+  margin-bottom: 10px;
+}
+
+.card-text {
+  font-size: 1rem;
+  color: #555;
+}
+
+/* Dark mode styles for cards */
+.dark-mode .card {
+  background-color: #333;
+  border-color: #444;
+}
+
+.dark-mode .card-title,
+.dark-mode .card-text {
+  color: #fff;
+}
