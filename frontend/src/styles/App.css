@@ -1,128 +1,56 @@
-.App {
-    text-align: center;
-    padding: 20px;
-  }
-  
-  .task {
-    border: 1px solid #ccc;
-    padding: 10px;
-    margin: 10px auto;
-    max-width: 500px;
-    text-align: left;
-  }
-  
-  form {
-    margin-bottom: 20px;
-  }
-  
-  input, textarea, select {
-    display: block;
-    margin: 10px auto;
-    padding: 8px;
-    width: 80%;
-    max-width: 400px;
-  }
-  
-  button {
-    padding: 10px 20px;
-    background-color: #007bff;
-    color: white;
-    border: none;
-    cursor: pointer;
-  }
-  
-  button:hover {
-    background-color: #0056b3;
-  }
-
- /* Light mode */
-body.light-mode {
+/* Light Mode (Default) */
+body {
   background-color: #ffffff;
   color: #000000;
+  transition: background-color 0.3s, color 0.3s; /* Smooth transition */
 }
 
-/* Dark mode */
+/* Dark Mode */
 body.dark-mode {
-  background-color: #1a1a1a;
-  color: #ffffff;
+  background-color: #121212; /* Dark background */
+  color: #ffffff; /* Light text */
 }
 
-/* Dark mode styles for specific elements */
-.dark-mode .card {
-  background-color: #333333;
-  color: #ffffff;
-  border-color: #444444;
+.dark-mode .container {
+  background-color: #121212; /* Dark container background */
+  color: #ffffff; /* Light text */
 }
 
-.dark-mode .btn-secondary {
-  background-color: #555555;
-  border-color: #555555;
+.dark-mode .list-group-item {
+  background-color: #1e1e1e; /* Dark task item background */
+  color: #ffffff; /* Light text */
+  border-color: #333333; /* Dark border */
 }
 
-.dark-mode .btn-primary {
-  background-color: #007bff;
-  border-color: #007bff;
+.dark-mode .form-control,
+.dark-mode .form-select {
+  background-color: #1e1e1e; /* Dark input background */
+  color: #ffffff; /* Light text */
+  border-color: #333333; /* Dark border */
 }
 
-.dark-mode .btn-success {
-  background-color: #28a745;
-  border-color: #28a745;
+.dark-mode .btn-link {
+  color: #ffffff; /* Light icon color */
 }
 
-.dark-mode .btn-danger {
-  background-color: #dc3545;
-  border-color: #dc3545;
+/* Grid Layout for Tasks */
+.task-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr); /* 4 tasks per row */
+  gap: 16px; /* Space between tasks */
+  padding: 16px;
 }
 
-/* Ensure text color changes in dark mode */
-.dark-mode h1,
-.dark-mode h2,
-.dark-mode h3,
-.dark-mode p {
-  color: #ffffff;
+.task-item {
+  background-color: #f8f9fa; /* Light task item background */
+  border: 1px solid #dee2e6; /* Light border */
+  border-radius: 8px; /* Rounded corners */
+  padding: 16px;
+  transition: background-color 0.3s, color 0.3s; /* Smooth transition */
 }
 
-/* Center align the container */
-.container {
-  max-width: 800px;
-  margin: 0 auto;
-  padding: 20px;
-}
-
-/* Center align the heading */
-h1 {
-  text-align: center;
-}
-
-/* Task card styles */
-.card {
-  height: 100%;
-  border: 1px solid #ddd;
-  border-radius: 8px;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-}
-
-.card-body {
-  padding: 20px;
-}
-
-.card-title {
-  font-size: 1.25rem;
-  margin-bottom: 10px;
-}
-
-.card-text {
-  font-size: 1rem;
-  color: #555;
-}
-
-/* Dark mode styles for cards */
-.dark-mode .card {
-  background-color: #333;
-  border-color: #444;
-}
-
-.dark-mode .card-title,
-.dark-mode .card-text {
-  color: #fff;
+.dark-mode .task-item {
+  background-color: #1e1e1e; /* Dark task item background */
+  border-color: #333333; /* Dark border */
+  color: #ffffff; /* Light text */
 }

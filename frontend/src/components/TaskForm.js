@@ -1,13 +1,10 @@
 import React, { useState, useEffect } from 'react';
-import { useDispatch } from 'react-redux';
-import { addTask, editTask } from '../redux/taskSlice';
 
-const TaskForm = ({ taskToEdit, setTaskToEdit }) => {
-  const dispatch = useDispatch();
+const TaskForm = ({ taskToEdit, setTaskToEdit, handleAddOrUpdateTask }) => {
   const [title, setTitle] = useState('');
   const [description, setDescription] = useState('');
-  const [priority, setPriority] = useState('Low');
-  const [category, setCategory] = useState('Work');
+  const [priority, setPriority] = useState('Medium');
+  const [category, setCategory] = useState('Personal');
 
   // Populate form fields if editing a task
   useEffect(() => {
@@ -21,18 +18,16 @@ const TaskForm = ({ taskToEdit, setTaskToEdit }) => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    if (title && description) {
-      if (taskToEdit) {
-        dispatch(editTask({ id: taskToEdit.id, title, description, priority, category }));
-        setTaskToEdit(null); // Clear edit mode
-      } else {
-        dispatch(addTask({ title, description, priority, category }));
-      }
-      setTitle('');
-      setDescription('');
-      setPriority('Low');
-      setCategory('Work');
-    }
+    const task = { title, description, priority, category };
+
+    // Call the function to add or update the task
+    handleAddOrUpdateTask(task);
+
+    // Clear the form
+    setTitle('');
+    setDescription('');
+    setPriority('Medium');
+    setCategory('Personal');
   };
 
   return (
@@ -74,9 +69,10 @@ const TaskForm = ({ taskToEdit, setTaskToEdit }) => {
           value={category}
           onChange={(e) => setCategory(e.target.value)}
         >
-          <option value="Work">Work</option>
           <option value="Personal">Personal</option>
+          <option value="Business">Business</option>
           <option value="Shopping">Shopping</option>
+          <option value="Other">Other</option>
         </select>
       </div>
       <button type="submit" className="btn btn-primary">
