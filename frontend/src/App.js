@@ -2,75 +2,70 @@ import React, { useState, useEffect } from 'react';
 import TaskForm from './components/TaskForm';
 import TaskList from './components/TaskList';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import { FaMoon, FaSun } from 'react-icons/fa'; // Icons for dark/light mode
+import { FaMoon, FaSun } from 'react-icons/fa';
 
 const App = () => {
-  const [tasks, setTasks] = useState([]); // State for tasks
-  const [taskToEdit, setTaskToEdit] = useState(null); // State for task being edited
-  const [darkMode, setDarkMode] = useState(false); // State for dark mode
+  const [tasks, setTasks] = useState([]);
+  const [taskToEdit, setTaskToEdit] = useState(null);
+  const [darkMode, setDarkMode] = useState(false);
 
-  // Function to add or update a task
+  // Apply dark mode to body and container
+  useEffect(() => {
+    document.body.className = darkMode ? 'dark-mode' : '';
+    document.body.style.backgroundColor = darkMode ? '#121212' : '#ffffff';
+    document.body.style.color = darkMode ? '#ffffff' : '#000000';
+  }, [darkMode]);
+
   const handleAddOrUpdateTask = (task) => {
     if (taskToEdit) {
-      // Update existing task
-      setTasks(tasks.map((t) => (t.id === taskToEdit.id ? task : t)));
-      setTaskToEdit(null); // Clear edit mode
+      setTasks(tasks.map(t => t.id === taskToEdit.id ? task : t));
+      setTaskToEdit(null);
     } else {
-      // Add new task
       setTasks([...tasks, { ...task, id: Date.now(), status: 'Pending' }]);
     }
   };
 
-  // Function to delete a task
   const deleteTask = (id) => {
-    setTasks(tasks.filter((task) => task.id !== id));
+    setTasks(tasks.filter(task => task.id !== id));
   };
 
-  // Function to toggle task status
   const toggleTaskStatus = (id) => {
-    setTasks(
-      tasks.map((task) =>
-        task.id === id
-          ? { ...task, status: task.status === 'Pending' ? 'Completed' : 'Pending' }
-          : task
-      )
-    );
+    setTasks(tasks.map(task => 
+      task.id === id ? { ...task, status: task.status === 'Pending' ? 'Completed' : 'Pending' } : task
+    ));
   };
-
-  // Toggle dark mode
-  const toggleDarkMode = () => {
-    setDarkMode(!darkMode);
-  };
-
-  // Apply dark mode class to the body element
-  useEffect(() => {
-    if (darkMode) {
-      document.body.classList.add('dark-mode');
-    } else {
-      document.body.classList.remove('dark-mode');
-    }
-  }, [darkMode]);
 
   return (
-    <div className="container mt-5">
-      <div className="text-center mb-2">
-        <h1>Task Management App</h1>
+    <div className={`container mt-5 ${darkMode ? 'bg-dark' : ''}`}>
+      {/* Centered Header */}
+      <div className="text-center mb-4">
+        <h1 className={darkMode ? 'text-light' : ''}>Task Management App</h1>
+        <p className={`fst-italic ${darkMode ? 'text-light' : 'text-muted'}`}>
+          Program and Plan
+        </p>
       </div>
-      <div className="d-flex justify-content-end mb-4">
-        <button onClick={toggleDarkMode} className="btn btn-link">
-          {darkMode ? <FaSun size={24} /> : <FaMoon size={24} />}
-        </button>
-      </div>
-      <TaskForm
+
+      {/* Dark Mode Toggle - Positioned absolutely */}
+      <button 
+        onClick={() => setDarkMode(!darkMode)} 
+        className="btn btn-link position-absolute top-0 end-0 mt-3 me-3"
+      >
+        {darkMode ? <FaSun size={24} className="text-warning" /> : <FaMoon size={24} />}
+      </button>
+      
+      <TaskForm 
         taskToEdit={taskToEdit}
         setTaskToEdit={setTaskToEdit}
         handleAddOrUpdateTask={handleAddOrUpdateTask}
+        darkMode={darkMode}
       />
+      
       <TaskList
-        tasks={tasks} // Pass tasks state
+        tasks={tasks}
         setTaskToEdit={setTaskToEdit}
         deleteTask={deleteTask}
         toggleTaskStatus={toggleTaskStatus}
+        darkMode={darkMode}
       />
     </div>
   );

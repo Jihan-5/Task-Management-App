@@ -5,52 +5,96 @@ body {
   transition: background-color 0.3s, color 0.3s; /* Smooth transition */
 }
 
-/* Dark Mode */
+/* Dark Mode Styles */
 body.dark-mode {
-  background-color: #121212; /* Dark background */
-  color: #ffffff; /* Light text */
+  background-color: #121212;
+  color: #ffffff;
+  min-height: 100vh;
+  transition: all 0.3s ease;
 }
 
 .dark-mode .container {
-  background-color: #121212; /* Dark container background */
-  color: #ffffff; /* Light text */
+  background-color: #121212;
 }
 
-.dark-mode .list-group-item {
-  background-color: #1e1e1e; /* Dark task item background */
-  color: #ffffff; /* Light text */
-  border-color: #333333; /* Dark border */
+/* Task Grid Layout */
+.task-grid-container {
+  padding: 20px;
 }
 
+.row-cols-1 .card {
+  margin-bottom: 20px;
+}
+
+/* Card Styles */
+.card {
+  transition: transform 0.2s, box-shadow 0.2s;
+  height: 100%;
+}
+
+.card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+}
+
+.dark-mode .card {
+  background-color: #1e1e1e;
+  color: #ffffff;
+  border-color: #333;
+}
+
+/* Form Styles */
 .dark-mode .form-control,
 .dark-mode .form-select {
-  background-color: #1e1e1e; /* Dark input background */
-  color: #ffffff; /* Light text */
-  border-color: #333333; /* Dark border */
+  background-color: #2d2d2d;
+  color: #ffffff;
+  border-color: #444;
 }
 
-.dark-mode .btn-link {
-  color: #ffffff; /* Light icon color */
+.dark-mode .form-control:focus,
+.dark-mode .form-select:focus {
+  background-color: #2d2d2d;
+  color: #ffffff;
 }
 
-/* Grid Layout for Tasks */
-.task-grid {
-  display: grid;
-  grid-template-columns: repeat(4, 1fr); /* 4 tasks per row */
-  gap: 16px; /* Space between tasks */
-  padding: 16px;
+/* Input Field Styling for Title and Description */
+input.title-input, input.description-input {
+  width: 100%;
+  padding: 12px;
+  margin-bottom: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  font-size: 16px;
+  transition: all 0.3s ease;
 }
 
-.task-item {
-  background-color: #f8f9fa; /* Light task item background */
-  border: 1px solid #dee2e6; /* Light border */
-  border-radius: 8px; /* Rounded corners */
-  padding: 16px;
-  transition: background-color 0.3s, color 0.3s; /* Smooth transition */
+input.title-input::placeholder {
+  color: #999;
+  font-weight: bold;
 }
 
-.dark-mode .task-item {
-  background-color: #1e1e1e; /* Dark task item background */
-  border-color: #333333; /* Dark border */
-  color: #ffffff; /* Light text */
+input.description-input::placeholder {
+  color: #aaa;
+  font-style: italic;
+}
+
+/* Button Styles */
+.dark-mode .btn-outline-success {
+  color: #ffffff;
+  border-color: #ffffff;
+}
+
+.dark-mode .btn-outline-primary {
+  color: #ffffff;
+  border-color: #ffffff;
+}
+
+.dark-mode .btn-outline-danger {
+  color: #ffffff;
+  border-color: #ffffff;
+}
+
+/* Text Styles */
+.dark-mode .text-muted {
+  color: #aaa !important;
 }

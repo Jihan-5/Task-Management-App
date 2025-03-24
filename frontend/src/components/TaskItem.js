@@ -1,6 +1,6 @@
 import React from 'react';
 
-const TaskItem = ({ task, deleteTask, toggleTaskStatus, setTaskToEdit }) => {
+const TaskItem = ({ task, deleteTask, toggleTaskStatus, setTaskToEdit, darkMode }) => {
   const getPriorityColor = () => {
     switch(task.priority) {
       case 'High': return 'danger';
@@ -11,7 +11,7 @@ const TaskItem = ({ task, deleteTask, toggleTaskStatus, setTaskToEdit }) => {
   };
 
   return (
-    <div className="card h-100 shadow-sm">
+    <div className={`card h-100 ${darkMode ? 'bg-dark text-light border-secondary' : ''}`}>
       <div className="card-body d-flex flex-column">
         <div className="d-flex justify-content-between align-items-start mb-2">
           <h5 className="card-title mb-0">{task.title}</h5>
@@ -26,24 +26,26 @@ const TaskItem = ({ task, deleteTask, toggleTaskStatus, setTaskToEdit }) => {
           <span className={`badge ${task.status === 'Pending' ? 'bg-warning' : 'bg-success'}`}>
             {task.status}
           </span>
-          <small className="text-muted">{task.category}</small>
+          <small className={darkMode ? 'text-light' : 'text-muted'}>
+            {task.category}
+          </small>
         </div>
         
         <div className="d-grid gap-2 d-md-flex justify-content-md-end">
           <button
-            className="btn btn-sm btn-outline-success"
+            className={`btn btn-sm ${darkMode ? 'btn-outline-light' : 'btn-outline-success'}`}
             onClick={() => toggleTaskStatus(task.id)}
           >
             {task.status === 'Pending' ? '✓ Complete' : '↩ Pending'}
           </button>
           <button
-            className="btn btn-sm btn-outline-primary"
+            className={`btn btn-sm ${darkMode ? 'btn-outline-info' : 'btn-outline-primary'}`}
             onClick={() => setTaskToEdit(task)}
           >
             Edit
           </button>
           <button 
-            className="btn btn-sm btn-outline-danger"
+            className={`btn btn-sm ${darkMode ? 'btn-outline-danger' : 'btn-outline-danger'}`}
             onClick={() => deleteTask(task.id)}
           >
             Delete
