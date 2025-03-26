@@ -1,4 +1,4 @@
-Dynamic Task Management App
+#Dynamic Task Management App
 Integrated React.js for the frontend with Node.js and Express for the backend. Utilized MongoDB/PostgreSQL/Firebase for data storage, ensuring efficient task management. Applied JWT-based authentication and implemented secure API endpoints with rate limiting, CORS, and input validation.
 
 Frontend Components:
